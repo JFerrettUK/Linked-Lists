@@ -6,16 +6,19 @@
 // 1. LinkedList class / factory, which will represent the full list.
 class LinkedList {
     constructor() {
-      this.nodeHead = new ListNode('Head', 1)
-      this.nodeTail = new ListNode('Tail', null)
+        this.nodeHead = new ListNode(null, 'nodeTail');
+        this.nodeTail = new ListNode('nodeTail', null);
     }
 
     // Build the following functions in your linked list class:
     // append(value) adds a new node containing value to the end of the list
     append = function(value) {
         let newNode = new ListNode(value);
-        console.log(linkedList.nodeHead.pointTo = value) 
-        //add new value before a node with data 'null'
+        //take the pointer from the node "before" and graft it to the new node
+
+        //points the nodeHead to the new node
+
+        //point the node "before" to the new node
     }
     // prepend(value) adds a new node containing value to the start of the list
     prepend = function(value) {
@@ -32,7 +35,7 @@ class LinkedList {
     }
     // at(index) returns the node at the given index
     at = function(index) {
-        let foundNode = new ListNode(index);
+        let foundNode = new Node(index);
     }
     // pop removes the last element from the list
     pop = function() {
@@ -58,13 +61,11 @@ class ListNode {
         else {this.data = data;}
 
         // Make a link to the next node
-        if(pointsTo == undefined){this.nextPosition = null}
+        if(pointsTo == undefined){this.pointsTo = null}
         else {this.pointsTo = pointsTo;}
     }
 }
 
-let node1 = new ListNode(1, null)
 const linkedList = new LinkedList()
-
 console.log(linkedList)
-console.log(node1)
+
