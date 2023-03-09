@@ -12,15 +12,13 @@ class LinkedList {
         this.appendToLastNode(value.next, newNode)
     }
 
-    retrieveTail = function(value) {
+    returnTailNode = function(value) {
         if (value.next == null) {
             let lastNode = value;
-            console.log(lastNode);
             return lastNode
         }
-        this.retrieveTail(value.next)
+        return this.returnTailNode(value.next)
     }
-
 
     append = function(value) {
         let newNode = new ListNode(value)
@@ -38,8 +36,7 @@ class LinkedList {
     }
 
     tail = function() {
-        let tailIs = this.retrieveTail(this.head)
-        return tailIs
+        return this.returnTailNode(this.head)
     }
 }
 
@@ -58,8 +55,5 @@ list.prepend(7)
 list.append(9)
 list.append(21)
 list.prepend(31)
-
 console.log(list.head)
-
-
-console.log(list.tail() + " is tail of list") 
+console.log(list.tail()) 
