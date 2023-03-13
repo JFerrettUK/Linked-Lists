@@ -41,9 +41,6 @@ class LinkedList {
 
     returnIndexNode = function(value, i, theList) {
         i++
-
-        console.log(value + " is value")
-        console.log(i + " is i")
         if (value == i) {
             return theList.data
         } else if (this.size < i) {
@@ -107,6 +104,42 @@ class LinkedList {
         return this.findValueIndex(value, this.head, 0)
     }
 
+    listAsString = function(theList, string, i) {
+        if (theList.next == null) {
+            string += String(theList.data) + ")"
+            return string
+        }
+        string += String(theList.data) + ") -> ("
+        return this.listAsString(theList.next, string, i)
+    }
+
+    toString = function() {
+        let i = 0
+        let string = "("
+        return this.listAsString(this.head, string, i)
+    }
+
+    insertValue = function(value, index, i, theList) {
+        i++
+        console.log(theList)
+        if (i == index) {
+            let oldNode = theList.next
+            theList.next = new ListNode(value)
+            theList.next.next = oldNode
+            return theList
+        } else if (theList.next == null) {
+            return "no value at that index"
+        }
+
+        return this.insertValue(value, index, i, theList.next)
+    }
+
+    insertAt = function(value, index) {
+        let i = 0
+        let newList = this.insertValue(value, index, i, this.head)
+        console.log(newList)
+        return this.head
+    }
 
 }
 
@@ -126,3 +159,5 @@ list.append(9)
 list.prepend(31)
 list.append(21)
 list.pop()
+console.log(list.toString())
+console.log(list.insertAt(98, 3))
