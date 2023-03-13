@@ -40,10 +40,15 @@ class LinkedList {
     }
 
     returnIndexNode = function(value, i, theList) {
+        i++
+
+        console.log(value + " is value")
+        console.log(i + " is i")
         if (value == i) {
             return theList.data
+        } else if (this.size < i) {
+            return null
         }
-        i++
         return this.returnIndexNode(value, i, theList.next)
     }
 
@@ -58,7 +63,6 @@ class LinkedList {
             return
         }
         i++
-
         return this.deleteEnd(theList.next, i, size)
     }
 
@@ -73,19 +77,37 @@ class LinkedList {
         }
     }
 
-    findValue = function(value, theList) {
-        console.log(value + " == " + theList.data)
+    findValue = function(value, theList, i) {
+        i++
         if (value == theList.data) {
-            console.log(value + " is here")
             return true
+        } else if (i == this.size) {
+            return false
         }
-        return this.returnIndexNode(value, theList.next)
+        return this.findValue(value, theList.next, i)
     }
 
     contains = function(value) {
         //return true if 'value' is in the list, otherwise returns false
-        this.findValue(value, this.head)
+        return this.findValue(value, this.head, 0)
     }
+
+
+    findValueIndex = function(value, theList, i) {
+        i++
+        if (value == theList.data) {
+            return i
+        } else if (i == this.size) {
+            return null
+        }
+        return this.findValueIndex(value, theList.next, i)
+    }
+
+    find = function(value) {
+        return this.findValueIndex(value, this.head, 0)
+    }
+
+
 }
 
 class ListNode {
@@ -104,4 +126,3 @@ list.append(9)
 list.prepend(31)
 list.append(21)
 list.pop()
-list.contains(9)
