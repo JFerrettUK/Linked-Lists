@@ -141,7 +141,9 @@ class LinkedList {
     removeIndex = function(index, i, theList) {
         if (i == index) {
             console.log(index + " index is " + i)
-            theList.data = theList.next
+            theList.data = null
+            theList.data = theList.next.data
+            theList.next = theList.next.next
             return theList
         } else if (theList.next == null) {
             return "no value at that index"
@@ -175,5 +177,5 @@ list.append(21)
 list.pop()
 list.insertAt(98, 3)
 console.log(list.toString())
-list.removeAt(3)
+list.removeAt(1)
 console.log(list.toString())
