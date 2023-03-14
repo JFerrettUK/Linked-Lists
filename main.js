@@ -85,7 +85,6 @@ class LinkedList {
     }
 
     contains = function(value) {
-        //return true if 'value' is in the list, otherwise returns false
         return this.findValue(value, this.head, 0)
     }
 
@@ -135,6 +134,7 @@ class LinkedList {
     insertAt = function(value, index) {
         let i = 0
         this.insertValue(value, index, i, this.head)
+        this.size++
         return this.head
     }
 
@@ -155,6 +155,7 @@ class LinkedList {
     removeAt = function(index) {
         let i = 0
         this.removeIndex(index, i, this.head)
+        this.size--
         return this.head
     }
 }
